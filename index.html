@@ -1,0 +1,344 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+
+<head>
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>LifeLog</title>
+
+<link
+    rel="manifest"
+    href="manifest.json"
+>
+
+<link
+    rel="apple-touch-icon"
+    href="apple-touch-icon.png"
+>
+
+<meta
+    name="theme-color"
+    content="#f5f5f7"
+>
+
+<meta
+    name="apple-mobile-web-app-capable"
+    content="yes"
+>
+
+<meta
+    name="apple-mobile-web-app-status-bar-style"
+    content="default"
+>
+
+<meta
+    name="apple-mobile-web-app-title"
+    content="LifeLog"
+>
+
+    <link
+        rel="stylesheet"
+        href="style.css"
+    >
+</head>
+
+<body>
+
+    <main class="container">
+
+        <h1>LifeLog</h1>
+
+        <p class="subtitle">
+            我的生活與支出紀錄
+        </p>
+
+
+        <!-- 輸入表單 -->
+
+        <section class="card">
+
+            <h2 id="form-title">
+                新增紀錄
+            </h2>
+
+
+            <div class="form-group">
+
+                <label for="date">
+                    日期
+                </label>
+
+                <input
+                    type="date"
+                    id="date"
+                >
+
+            </div>
+
+
+            <div class="form-group">
+
+                <label for="title">
+                    內容
+                </label>
+
+                <input
+                    type="text"
+                    id="title"
+                    placeholder="例如：午餐"
+                >
+
+            </div>
+
+
+            <div class="form-group">
+
+                <label for="category">
+                    事件類型
+                </label>
+
+                <select id="category">
+
+                    <option>餐飲</option>
+                    <option>交通</option>
+                    <option>購物</option>
+                    <option>電影</option>
+                    <option>影集</option>
+                    <option>閱讀</option>
+                    <option>聚餐</option>
+                    <option>旅行</option>
+                    <option>住宿</option>
+                    <option>健康</option>
+                    <option>學習</option>
+                    <option>工作</option>
+                    <option>娛樂</option>
+                    <option>其他</option>
+
+                </select>
+
+            </div>
+
+
+            <div class="form-group">
+
+                <label>
+                    收支性質
+                </label>
+
+                <div class="radio-group">
+
+                    <div class="radio-option">
+
+                        <input
+                            type="radio"
+                            id="transaction-none"
+                            name="transaction"
+                            value="無"
+                            checked
+                        >
+
+                        <label for="transaction-none">
+                            無
+                        </label>
+
+                    </div>
+
+
+                    <div class="radio-option">
+
+                        <input
+                            type="radio"
+                            id="transaction-expense"
+                            name="transaction"
+                            value="支出"
+                        >
+
+                        <label for="transaction-expense">
+                            支出
+                        </label>
+
+                    </div>
+
+
+                    <div class="radio-option">
+
+                        <input
+                            type="radio"
+                            id="transaction-income"
+                            name="transaction"
+                            value="收入"
+                        >
+
+                        <label for="transaction-income">
+                            收入
+                        </label>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <div class="form-group">
+
+                <label for="amount">
+                    金額
+                </label>
+
+                <input
+                    type="number"
+                    id="amount"
+                    min="0"
+                    step="1"
+                    inputmode="decimal"
+                    placeholder="0"
+                >
+
+            </div>
+
+
+            <div class="form-group">
+
+                <label for="tags">
+                    標籤
+                </label>
+
+                <input
+                    type="text"
+                    id="tags"
+                    placeholder="例如：朋友, 晚餐, 台北"
+                >
+
+            </div>
+
+
+            <details
+                class="more-fields"
+                id="more-fields"
+            >
+
+                <summary>
+                    ＋ 更多資料
+                </summary>
+
+
+                <div class="form-group">
+
+                    <label for="end-date">
+                        結束日期
+                    </label>
+
+                    <input
+                        type="date"
+                        id="end-date"
+                    >
+
+                </div>
+
+
+                <div class="form-group">
+
+                    <label for="work-year">
+                        作品年份
+                    </label>
+
+                    <input
+                        type="number"
+                        id="work-year"
+                        min="0"
+                        max="2100"
+                        step="1"
+                        inputmode="numeric"
+                        placeholder="例如：1972"
+                    >
+
+                </div>
+
+
+                <div class="form-group">
+
+                    <label for="description">
+                        備註
+                    </label>
+
+                    <textarea
+                        id="description"
+                        rows="4"
+                        placeholder="其他想記錄的內容"
+                    ></textarea>
+
+                </div>
+
+            </details>
+
+
+            <button
+                type="button"
+                class="save-button"
+                id="save-button"
+            >
+                儲存
+            </button>
+
+
+            <button
+                type="button"
+                class="cancel-button"
+                id="cancel-button"
+                hidden
+            >
+                取消編輯
+            </button>
+
+
+            <p
+                id="message"
+                class="message"
+            ></p>
+
+        </section>
+
+
+        <!-- 最近紀錄 -->
+
+        <section class="card records-card">
+
+            <button
+                type="button"
+                class="export-button"
+                id="export-button"
+            >
+                匯出資料
+            </button>
+
+
+            <h2>
+                最近紀錄
+            </h2>
+
+
+            <div id="records">
+
+                <p class="empty-message">
+                    目前還沒有紀錄。
+                </p>
+
+            </div>
+
+        </section>
+
+    </main>
+
+
+    <script src="database.js"></script>
+    <script src="app.js"></script>
+
+</body>
+
+</html>

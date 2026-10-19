@@ -1,0 +1,344 @@
+* {
+    box-sizing: border-box;
+}
+
+
+body {
+    margin: 0;
+    padding: 0;
+
+    font-family:
+        -apple-system,
+        BlinkMacSystemFont,
+        "Segoe UI",
+        sans-serif;
+
+    background-color: #f5f5f7;
+    color: #1d1d1f;
+}
+
+
+.container {
+    width: 100%;
+    max-width: 500px;
+
+    margin: 0 auto;
+    padding: 24px 18px 40px;
+}
+
+
+h1 {
+    margin-bottom: 4px;
+    font-size: 32px;
+}
+
+
+.subtitle {
+    margin-top: 0;
+    margin-bottom: 30px;
+
+    color: #6e6e73;
+}
+
+
+h2 {
+    margin-top: 0;
+    margin-bottom: 20px;
+
+    font-size: 22px;
+}
+
+
+.card {
+    padding: 20px;
+
+    background-color: white;
+
+    border-radius: 16px;
+
+    box-shadow:
+        0 2px 10px rgba(0, 0, 0, 0.06);
+}
+
+
+.records-card {
+    margin-top: 20px;
+}
+
+
+.form-group {
+    margin-bottom: 20px;
+}
+
+
+label {
+    display: block;
+
+    margin-bottom: 8px;
+
+    font-size: 15px;
+    font-weight: 600;
+}
+
+
+input,
+select,
+textarea {
+    width: 100%;
+
+    padding: 13px 14px;
+
+    font-family: inherit;
+    font-size: 17px;
+
+    border: 1px solid #d2d2d7;
+    border-radius: 10px;
+
+    background-color: white;
+}
+
+
+input:focus,
+select:focus,
+textarea:focus {
+    outline: none;
+    border-color: #007aff;
+}
+
+
+textarea {
+    resize: vertical;
+}
+
+
+/* 收支選項 */
+
+.radio-group {
+    display: flex;
+    gap: 10px;
+}
+
+
+.radio-option {
+    flex: 1;
+}
+
+
+.radio-option input {
+    display: none;
+}
+
+
+.radio-option label {
+    margin: 0;
+    padding: 12px 6px;
+
+    text-align: center;
+
+    border: 1px solid #d2d2d7;
+    border-radius: 10px;
+
+    font-weight: 500;
+
+    cursor: pointer;
+}
+
+
+.radio-option input:checked + label {
+    background-color: #007aff;
+    color: white;
+
+    border-color: #007aff;
+}
+
+
+/* 更多資料 */
+
+.more-fields {
+    margin-bottom: 20px;
+}
+
+
+.more-fields summary {
+    margin-bottom: 18px;
+
+    color: #007aff;
+
+    font-size: 16px;
+    font-weight: 600;
+
+    cursor: pointer;
+}
+
+
+/* 儲存 */
+
+.save-button {
+    width: 100%;
+
+    margin-top: 8px;
+    padding: 15px;
+
+    border: none;
+    border-radius: 12px;
+
+    font-size: 17px;
+    font-weight: 600;
+
+    background-color: #007aff;
+    color: white;
+
+    cursor: pointer;
+}
+
+
+/* 取消編輯 */
+
+.cancel-button {
+    width: 100%;
+
+    margin-top: 10px;
+    padding: 13px;
+
+    border: 1px solid #8e8e93;
+    border-radius: 12px;
+
+    background-color: white;
+    color: #3a3a3c;
+
+    font-size: 16px;
+    font-weight: 600;
+
+    cursor: pointer;
+}
+
+
+.save-button:active,
+.cancel-button:active,
+.export-button:active,
+.edit-button:active,
+.delete-button:active {
+    opacity: 0.7;
+}
+
+
+/* 匯出 */
+
+.export-button {
+    width: 100%;
+
+    margin-bottom: 24px;
+    padding: 13px;
+
+    border: 1px solid #007aff;
+    border-radius: 12px;
+
+    background-color: white;
+    color: #007aff;
+
+    font-size: 16px;
+    font-weight: 600;
+
+    cursor: pointer;
+}
+
+
+/* 訊息 */
+
+.message {
+    min-height: 20px;
+
+    margin-top: 12px;
+    margin-bottom: 0;
+
+    text-align: center;
+
+    font-size: 14px;
+}
+
+
+/* 紀錄 */
+
+.record-item {
+    padding: 16px 0;
+
+    border-bottom: 1px solid #e5e5ea;
+}
+
+
+.record-item:last-child {
+    border-bottom: none;
+}
+
+
+.record-title {
+    font-size: 17px;
+    font-weight: 600;
+}
+
+
+.record-meta {
+    margin-top: 5px;
+
+    font-size: 14px;
+    color: #6e6e73;
+}
+
+
+.record-amount {
+    margin-top: 5px;
+
+    font-size: 15px;
+    font-weight: 600;
+}
+
+
+.record-extra {
+    margin-top: 5px;
+
+    font-size: 14px;
+    color: #6e6e73;
+}
+
+
+.record-actions {
+    display: flex;
+
+    gap: 10px;
+
+    margin-top: 12px;
+}
+
+
+.edit-button,
+.delete-button {
+    flex: 1;
+
+    padding: 9px;
+
+    border-radius: 9px;
+
+    background-color: white;
+
+    font-size: 14px;
+    font-weight: 600;
+
+    cursor: pointer;
+}
+
+
+.edit-button {
+    border: 1px solid #007aff;
+    color: #007aff;
+}
+
+
+.delete-button {
+    border: 1px solid #d70015;
+    color: #d70015;
+}
+
+
+.empty-message {
+    color: #6e6e73;
+}
