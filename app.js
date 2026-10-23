@@ -9,7 +9,6 @@ const contentInput = document.getElementById("content");
 const eventOptions = document.getElementById("event-options");
 const amountInput = document.getElementById("amount");
 const tagsInput = document.getElementById("tags");
-const workYearInput = document.getElementById("work-year");
 const descriptionInput = document.getElementById("description");
 
 const saveButton = document.getElementById("save-button");
@@ -617,30 +616,7 @@ function getFormData() {
     }
 
 
-    let workYear = null;
-
-
-    if (workYearInput.value !== "") {
-
-        workYear =
-            Number(
-                workYearInput.value
-            );
-
-        if (
-            !Number.isInteger(workYear) ||
-            workYear < 0 ||
-            workYear > 2100
-        ) {
-
-            message.textContent =
-                "作品年份格式不正確。";
-
-            return null;
-
-        }
-
-    }
+    
 
 
     const tags =
@@ -688,9 +664,6 @@ function getFormData() {
             descriptionInput
                 .value
                 .trim(),
-
-        work_year:
-            workYear,
 
         tags:
             tags
@@ -893,9 +866,7 @@ async function startEdit(uuid) {
                 : "";
 
 
-        workYearInput.value =
-            event.work_year ?? "";
-
+        
 
         descriptionInput.value =
             event.description || "";
@@ -912,8 +883,7 @@ async function startEdit(uuid) {
 
 
         if (
-            event.end_date ||
-            event.work_year ||
+            event.end_date ||            
             event.description
         ) {
 
@@ -1047,7 +1017,6 @@ function resetForm() {
     endDateInput.value = "";
     amountInput.value = "";
     tagsInput.value = "";
-    workYearInput.value = "";
     descriptionInput.value = "";
 
 
@@ -1260,15 +1229,6 @@ async function displayEvents() {
 
                 const extraParts =
                     [];
-
-
-                if (event.work_year) {
-
-                    extraParts.push(
-                        `作品年份 ${event.work_year}`
-                    );
-
-                }
 
 
                 if (
@@ -1498,16 +1458,7 @@ function createSearchRecordItem(event) {
     }
 
 
-    const extraParts = [];
-
-
-    if (event.work_year) {
-
-        extraParts.push(
-            `作品年份 ${event.work_year}`
-        );
-
-    }
+    const extraParts = [];   
 
 
     if (
