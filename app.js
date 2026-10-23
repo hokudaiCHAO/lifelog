@@ -5,6 +5,7 @@
 const dateInput = document.getElementById("date");
 const endDateInput = document.getElementById("end-date");
 const titleInput = document.getElementById("title");
+const contentInput = document.getElementById("content");
 const eventOptions = document.getElementById("event-options");
 const amountInput = document.getElementById("amount");
 const tagsInput = document.getElementById("tags");
@@ -644,7 +645,7 @@ function getFormData() {
 
     const tags =
         tagsInput.value
-            .split(",")
+            .split(/[,，]/)
             .map(
                 function(tag) {
 
@@ -671,6 +672,11 @@ function getFormData() {
 
         title:
             title,
+
+        content:
+            contentInput
+                .value
+                .trim(),
 
         transaction_type:
             transactionType,
@@ -856,6 +862,8 @@ async function startEdit(uuid) {
         titleInput.value =
             event.title || "";
 
+        contentInput.value =
+            event.content || "";
 
         setTransactionType(
             event.transaction_type
@@ -1035,6 +1043,7 @@ function resetForm() {
     editingUuid = null;
 
     titleInput.value = "";
+    contentInput.value = "";
     endDateInput.value = "";
     amountInput.value = "";
     tagsInput.value = "";
@@ -1166,6 +1175,25 @@ async function displayEvents() {
                 item.appendChild(
                     title
                 );
+
+                if (event.content) {
+
+                    const content =
+                        document.createElement(
+                            "div"
+                        );
+
+                    content.className =
+                        "record-content";
+
+                    content.textContent =
+                        event.content;
+
+                    item.appendChild(
+                        content
+                    );
+
+                }
 
 
                 const meta =
@@ -1399,6 +1427,25 @@ function createSearchRecordItem(event) {
 
     item.appendChild(title);
 
+                if (event.content) {
+
+                    const content =
+                        document.createElement(
+                            "div"
+                        );
+
+                    content.className =
+                        "record-content";
+
+                    content.textContent =
+                        event.content;
+
+                    item.appendChild(
+                        content
+                    );
+
+                }
+
 
     const meta =
         document.createElement("div");
@@ -1622,6 +1669,13 @@ async function updateSearchResults() {
                                 "zh-Hant"
                             );
 
+                        const content =
+                            String(
+                                event.content || ""
+                            ).toLocaleLowerCase(
+                                "zh-Hant"
+                            );
+
 
                         const description =
                             String(
@@ -1641,8 +1695,9 @@ async function updateSearchResults() {
                                 : "";
 
 
-                        return (
+                                                return (
                             title.includes(keyword) ||
+                            content.includes(keyword) ||
                             description.includes(keyword) ||
                             tags.includes(keyword)
                         );
