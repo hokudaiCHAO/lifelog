@@ -1,344 +1,779 @@
+/* =========================================================
+   基本設定
+========================================================= */
+
 * {
     box-sizing: border-box;
 }
 
+html {
+    -webkit-text-size-adjust: 100%;
+}
 
 body {
     margin: 0;
     padding: 0;
 
+    background: #f5f5f7;
+
+    color: #1d1d1f;
+
     font-family:
         -apple-system,
         BlinkMacSystemFont,
         "Segoe UI",
+        "Noto Sans TC",
         sans-serif;
 
-    background-color: #f5f5f7;
-    color: #1d1d1f;
+    line-height: 1.5;
 }
 
+
+/* =========================================================
+   主容器
+========================================================= */
 
 .container {
     width: 100%;
-    max-width: 500px;
+    max-width: 680px;
 
     margin: 0 auto;
-    padding: 24px 18px 40px;
+
+    padding:
+        32px
+        16px
+        60px;
 }
 
+
+/* =========================================================
+   標題
+========================================================= */
 
 h1 {
-    margin-bottom: 4px;
-    font-size: 32px;
-}
+    margin:
+        0
+        0
+        4px;
 
+    font-size: 32px;
+
+    font-weight: 700;
+
+    letter-spacing: -0.5px;
+}
 
 .subtitle {
-    margin-top: 0;
-    margin-bottom: 30px;
+    margin:
+        0
+        0
+        24px;
 
     color: #6e6e73;
-}
-
-
-h2 {
-    margin-top: 0;
-    margin-bottom: 20px;
-
-    font-size: 22px;
-}
-
-
-.card {
-    padding: 20px;
-
-    background-color: white;
-
-    border-radius: 16px;
-
-    box-shadow:
-        0 2px 10px rgba(0, 0, 0, 0.06);
-}
-
-
-.records-card {
-    margin-top: 20px;
-}
-
-
-.form-group {
-    margin-bottom: 20px;
-}
-
-
-label {
-    display: block;
-
-    margin-bottom: 8px;
 
     font-size: 15px;
-    font-weight: 600;
 }
 
+h2 {
+    margin:
+        0
+        0
+        22px;
+
+    font-size: 21px;
+
+    font-weight: 650;
+}
+
+h3 {
+    margin:
+        0
+        0
+        12px;
+
+    font-size: 17px;
+
+    font-weight: 650;
+}
+
+
+/* =========================================================
+   卡片
+========================================================= */
+
+.card {
+    margin-bottom: 18px;
+
+    padding: 22px;
+
+    background: #ffffff;
+
+    border-radius: 18px;
+
+    box-shadow:
+        0 1px 3px
+        rgba(0, 0, 0, 0.05);
+}
+
+
+/* =========================================================
+   表單
+========================================================= */
+
+.form-group {
+    margin-bottom: 18px;
+}
+
+.form-group > label {
+    display: block;
+
+    margin-bottom: 7px;
+
+    color: #3a3a3c;
+
+    font-size: 14px;
+
+    font-weight: 600;
+}
 
 input,
 select,
 textarea {
     width: 100%;
 
-    padding: 13px 14px;
+    min-height: 44px;
 
-    font-family: inherit;
-    font-size: 17px;
+    padding:
+        10px
+        12px;
 
-    border: 1px solid #d2d2d7;
+    border:
+        1px solid #d2d2d7;
+
     border-radius: 10px;
 
-    background-color: white;
-}
+    background: #ffffff;
 
+    color: #1d1d1f;
 
-input:focus,
-select:focus,
-textarea:focus {
+    font-family: inherit;
+
+    font-size: 16px;
+
     outline: none;
-    border-color: #007aff;
-}
 
+    transition:
+        border-color 0.15s ease,
+        box-shadow 0.15s ease;
+}
 
 textarea {
     resize: vertical;
 }
 
+input:focus,
+select:focus,
+textarea:focus {
+    border-color: #86868b;
 
-/* 收支選項 */
+    box-shadow:
+        0 0 0 3px
+        rgba(0, 0, 0, 0.05);
+}
+
+input::placeholder,
+textarea::placeholder {
+    color: #aeaeb2;
+}
+
+
+/* =========================================================
+   Radio
+========================================================= */
 
 .radio-group {
     display: flex;
-    gap: 10px;
-}
 
+    gap: 10px;
+
+    flex-wrap: wrap;
+}
 
 .radio-option {
-    flex: 1;
-}
+    display: flex;
 
+    align-items: center;
+
+    gap: 6px;
+}
 
 .radio-option input {
-    display: none;
-}
+    width: auto;
 
+    min-height: auto;
+
+    margin: 0;
+}
 
 .radio-option label {
     margin: 0;
-    padding: 12px 6px;
 
-    text-align: center;
+    font-size: 15px;
 
-    border: 1px solid #d2d2d7;
-    border-radius: 10px;
-
-    font-weight: 500;
-
-    cursor: pointer;
+    font-weight: 400;
 }
 
 
-.radio-option input:checked + label {
-    background-color: #007aff;
-    color: white;
-
-    border-color: #007aff;
-}
-
-
-/* 更多資料 */
+/* =========================================================
+   更多資料
+========================================================= */
 
 .more-fields {
-    margin-bottom: 20px;
+    margin:
+        4px
+        0
+        20px;
+
+    padding-top: 4px;
 }
 
-
 .more-fields summary {
-    margin-bottom: 18px;
+    margin-bottom: 16px;
 
-    color: #007aff;
+    color: #6e6e73;
 
-    font-size: 16px;
+    font-size: 14px;
+
     font-weight: 600;
 
     cursor: pointer;
+
+    user-select: none;
 }
 
 
-/* 儲存 */
+/* =========================================================
+   按鈕
+========================================================= */
+
+button {
+    font-family: inherit;
+
+    cursor: pointer;
+}
 
 .save-button {
     width: 100%;
 
-    margin-top: 8px;
-    padding: 15px;
+    min-height: 48px;
+
+    padding:
+        12px
+        16px;
 
     border: none;
+
     border-radius: 12px;
 
-    font-size: 17px;
+    background: #1d1d1f;
+
+    color: #ffffff;
+
+    font-size: 16px;
+
     font-weight: 600;
-
-    background-color: #007aff;
-    color: white;
-
-    cursor: pointer;
 }
 
-
-/* 取消編輯 */
+.save-button:active {
+    opacity: 0.8;
+}
 
 .cancel-button {
     width: 100%;
 
-    margin-top: 10px;
-    padding: 13px;
+    min-height: 44px;
 
-    border: 1px solid #8e8e93;
+    margin-top: 10px;
+
+    padding:
+        10px
+        16px;
+
+    border:
+        1px solid #d2d2d7;
+
     border-radius: 12px;
 
-    background-color: white;
-    color: #3a3a3c;
+    background: #ffffff;
 
-    font-size: 16px;
-    font-weight: 600;
+    color: #1d1d1f;
 
-    cursor: pointer;
+    font-size: 15px;
+
+    font-weight: 500;
 }
-
-
-.save-button:active,
-.cancel-button:active,
-.export-button:active,
-.edit-button:active,
-.delete-button:active {
-    opacity: 0.7;
-}
-
-
-/* 匯出 */
 
 .export-button {
-    width: 100%;
+    float: right;
 
-    margin-bottom: 24px;
-    padding: 13px;
+    padding:
+        7px
+        11px;
 
-    border: 1px solid #007aff;
-    border-radius: 12px;
+    border:
+        1px solid #d2d2d7;
 
-    background-color: white;
-    color: #007aff;
+    border-radius: 9px;
 
-    font-size: 16px;
-    font-weight: 600;
+    background: #ffffff;
 
-    cursor: pointer;
+    color: #1d1d1f;
+
+    font-size: 13px;
+
+    font-weight: 500;
 }
 
 
-/* 訊息 */
+/* =========================================================
+   訊息
+========================================================= */
 
 .message {
     min-height: 20px;
 
-    margin-top: 12px;
-    margin-bottom: 0;
+    margin:
+        12px
+        0
+        0;
 
-    text-align: center;
+    color: #6e6e73;
 
     font-size: 14px;
+
+    text-align: center;
 }
 
 
-/* 紀錄 */
+/* =========================================================
+   統計
+========================================================= */
+
+.statistics-card {
+    overflow: hidden;
+}
+
+
+/* 統計摘要 */
+
+.statistics-summary {
+    display: grid;
+
+    grid-template-columns:
+        repeat(2, 1fr);
+
+    gap: 10px;
+
+    margin:
+        4px
+        0
+        28px;
+}
+
+.statistics-item {
+    display: flex;
+
+    flex-direction: column;
+
+    gap: 4px;
+
+    min-width: 0;
+
+    padding: 14px;
+
+    background: #f5f5f7;
+
+    border-radius: 12px;
+}
+
+.statistics-label {
+    color: #6e6e73;
+
+    font-size: 13px;
+
+    font-weight: 500;
+}
+
+.statistics-item strong {
+    overflow: hidden;
+
+    color: #1d1d1f;
+
+    font-size: 18px;
+
+    font-weight: 650;
+
+    text-overflow: ellipsis;
+
+    white-space: nowrap;
+}
+
+
+/* 事件／標籤統計 */
+
+.statistics-section {
+    margin-top: 24px;
+}
+
+.statistics-section + .statistics-section {
+    padding-top: 24px;
+
+    border-top:
+        1px solid #e5e5ea;
+}
+
+.statistics-row {
+    display: flex;
+
+    align-items: center;
+
+    justify-content: space-between;
+
+    gap: 16px;
+
+    min-height: 42px;
+
+    padding:
+        9px
+        2px;
+
+    border-bottom:
+        1px solid #f0f0f2;
+
+    font-size: 15px;
+}
+
+.statistics-row:last-child {
+    border-bottom: none;
+}
+
+.statistics-row span {
+    min-width: 0;
+
+    overflow: hidden;
+
+    text-overflow: ellipsis;
+
+    white-space: nowrap;
+}
+
+.statistics-row strong {
+    flex-shrink: 0;
+
+    font-size: 14px;
+
+    font-weight: 600;
+}
+
+
+/* =========================================================
+   最近紀錄
+========================================================= */
+
+.records-card::after {
+    display: block;
+
+    clear: both;
+
+    content: "";
+}
 
 .record-item {
-    padding: 16px 0;
+    padding:
+        16px
+        0;
 
-    border-bottom: 1px solid #e5e5ea;
+    border-bottom:
+        1px solid #e5e5ea;
 }
-
 
 .record-item:last-child {
     border-bottom: none;
 }
 
-
 .record-title {
-    font-size: 17px;
-    font-weight: 600;
-}
+    margin-bottom: 3px;
 
+    font-size: 16px;
+
+    font-weight: 650;
+}
 
 .record-meta {
-    margin-top: 5px;
-
-    font-size: 14px;
     color: #6e6e73;
-}
 
+    font-size: 13px;
+}
 
 .record-amount {
     margin-top: 5px;
 
-    font-size: 15px;
+    font-size: 14px;
+
     font-weight: 600;
 }
-
 
 .record-extra {
     margin-top: 5px;
 
-    font-size: 14px;
     color: #6e6e73;
-}
 
+    font-size: 13px;
+}
 
 .record-actions {
     display: flex;
 
-    gap: 10px;
+    gap: 8px;
 
-    margin-top: 12px;
+    margin-top: 10px;
 }
-
 
 .edit-button,
 .delete-button {
-    flex: 1;
+    padding:
+        6px
+        10px;
 
-    padding: 9px;
+    border:
+        1px solid #d2d2d7;
 
-    border-radius: 9px;
+    border-radius: 8px;
 
-    background-color: white;
+    background: #ffffff;
+
+    color: #1d1d1f;
+
+    font-size: 13px;
+}
+
+.delete-button {
+    color: #b42318;
+}
+
+
+/* =========================================================
+   空白提示
+========================================================= */
+
+.empty-message {
+    margin:
+        10px
+        0;
+
+    color: #8e8e93;
 
     font-size: 14px;
-    font-weight: 600;
+}
 
+
+/* =========================================================
+   手機
+========================================================= */
+
+@media (
+    max-width: 480px
+) {
+
+    .container {
+        padding:
+            24px
+            12px
+            48px;
+    }
+
+    h1 {
+        font-size: 29px;
+    }
+
+    .card {
+        padding: 18px;
+
+        border-radius: 16px;
+    }
+
+    .statistics-item {
+        padding: 12px;
+    }
+
+    .statistics-item strong {
+        font-size: 16px;
+    }
+
+}
+
+/* =========================================================
+   圖表
+========================================================= */
+
+.chart-container {
+    width: 100%;
+    margin-top: 16px;
+}
+
+.chart-row {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 12px;
+}
+
+.chart-label {
+    flex: 0 0 72px;
+    font-size: 14px;
+    color: #6e6e73;
+    text-align: right;
+}
+
+.chart-bar-area {
+    flex: 1;
+    min-width: 0;
+}
+
+.chart-bar {
+    height: 22px;
+    min-width: 2px;
+    background: #1d1d1f;
+    border-radius: 6px;
+}
+
+.chart-value {
+    flex: 0 0 88px;
+    font-size: 14px;
+    color: #1d1d1f;
+    text-align: right;
+    white-space: nowrap;
+}
+
+.chart-note {
+    margin: 8px 0 18px;
+    font-size: 13px;
+    color: #86868b;
+}
+
+
+@media (max-width: 480px) {
+
+    .chart-row {
+        gap: 8px;
+    }
+
+    .chart-label {
+        flex-basis: 54px;
+        font-size: 13px;
+    }
+
+    .chart-value {
+        flex-basis: 76px;
+        font-size: 13px;
+    }
+
+}
+
+/* =========================================================
+   主功能分頁
+========================================================= */
+
+.main-tabs {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 6px;
+    margin: 0 0 20px;
+    padding: 4px;
+    background: #f2f2f7;
+    border-radius: 12px;
+}
+
+.main-tab {
+    appearance: none;
+    border: none;
+    border-radius: 9px;
+    padding: 10px 4px;
+    background: transparent;
+    color: #6e6e73;
+    font-size: 14px;
+    font-weight: 500;
     cursor: pointer;
 }
 
-
-.edit-button {
-    border: 1px solid #007aff;
-    color: #007aff;
+.main-tab[hidden] {
+    display: none;
 }
 
 
-.delete-button {
-    border: 1px solid #d70015;
-    color: #d70015;
+.main-tab.active {
+    background: #ffffff;
+    color: #1d1d1f;
+    font-weight: 600;
+    box-shadow: 0 1px 4px rgba(0, 0, 0, 0.08);
+}
+
+.main-tab:active {
+    transform: scale(0.98);
 }
 
 
-.empty-message {
-    color: #6e6e73;
+@media (max-width: 480px) {
+
+    .main-tabs {
+        gap: 3px;
+    }
+
+    .main-tab {
+        padding: 10px 2px;
+        font-size: 13px;
+    }
+
+}
+
+/* =========================================================
+   統計篩選按鈕
+========================================================= */
+
+.statistics-filter-section {
+    margin-top: 20px;
+}
+
+.statistics-filter-title {
+    margin-bottom: 10px;
+    color: #1d1d1f;
+    font-size: 14px;
+    font-weight: 600;
+}
+
+.statistics-filter-buttons {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+}
+
+.statistics-filter-button {
+    appearance: none;
+    border: 1px solid #d2d2d7;
+    border-radius: 18px;
+    padding: 7px 14px;
+    background: #ffffff;
+    color: #3a3a3c;
+    font-size: 14px;
+    cursor: pointer;
+}
+
+.statistics-filter-button.active {
+    border-color: #1d1d1f;
+    background: #1d1d1f;
+    color: #ffffff;
+}
+
+.statistics-filter-button:active {
+    transform: scale(0.97);
 }

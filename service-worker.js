@@ -1,5 +1,5 @@
 const CACHE_NAME =
-    "lifelog-v2";
+    "lifelog-v5";
 
 
 const APP_FILES = [

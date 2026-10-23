@@ -2,6 +2,7 @@
 <html lang="zh-Hant">
 
 <head>
+
     <meta charset="UTF-8">
 
     <meta
@@ -9,63 +10,97 @@
         content="width=device-width, initial-scale=1.0"
     >
 
+    <meta
+        name="theme-color"
+        content="#ffffff"
+    >
+
     <title>LifeLog</title>
 
-<link
-    rel="manifest"
-    href="manifest.json"
->
-
-<link
-    rel="apple-touch-icon"
-    href="apple-touch-icon.png"
->
-
-<meta
-    name="theme-color"
-    content="#f5f5f7"
->
-
-<meta
-    name="apple-mobile-web-app-capable"
-    content="yes"
->
-
-<meta
-    name="apple-mobile-web-app-status-bar-style"
-    content="default"
->
-
-<meta
-    name="apple-mobile-web-app-title"
-    content="LifeLog"
->
+    <link
+        rel="manifest"
+        href="manifest.json"
+    >
 
     <link
         rel="stylesheet"
         href="style.css"
     >
+
 </head>
+
 
 <body>
 
     <main class="container">
 
-        <h1>LifeLog</h1>
 
-        <p class="subtitle">
-            我的生活與支出紀錄
-        </p>
+        <!-- =================================================
+             標題
+        ================================================== -->
 
+        <header>
 
-        <!-- 輸入表單 -->
+            <h1>LifeLog</h1>
 
-        <section class="card">
+            <p class="subtitle">
+                記錄生活
+            </p>
+
+        </header>
+
+        <!-- =================================================
+             主功能分頁
+        ================================================== -->
+
+        <nav
+            class="main-tabs"
+            aria-label="LifeLog 主功能"
+        >
+
+            <button
+                type="button"
+                class="main-tab active"
+                data-page="record"
+            >
+                新增紀錄
+            </button>
+
+            <button
+                type="button"
+                class="main-tab"
+                data-page="statistics"
+            >
+                統計
+            </button>
+
+            
+
+            <button
+                type="button"
+                class="main-tab"
+                data-page="search"
+            >
+                搜尋
+            </button>
+
+        </nav>
+
+        <!-- =================================================
+             新增／編輯紀錄
+        ================================================== -->
+
+                <section
+            class="card app-page"
+            data-page-content="record"
+        >
 
             <h2 id="form-title">
                 新增紀錄
             </h2>
 
+
+            <!-- 日期 -->
 
             <div class="form-group">
 
@@ -81,53 +116,44 @@
             </div>
 
 
-            <div class="form-group">
+            <!-- 紀錄 -->
 
-                <label for="title">
-                    內容
-                </label>
+<div class="form-group">
 
-                <input
-                    type="text"
-                    id="title"
-                    placeholder="例如：午餐"
-                >
+    <label for="title">
+        紀錄
+    </label>
 
-            </div>
+    <input
+        type="text"
+        id="title"
+        list="event-options"
+        placeholder="例如：收支、影視、閱讀"
+        autocomplete="off"
+    >
+
+    <datalist id="event-options">
+
+        <option value="收支">
+        <option value="影視">
+        <option value="閱讀">
+        <option value="醫療">
+        <option value="購物">
+        <option value="旅行">
+        <option value="工作">
+        <option value="其他">
+
+    </datalist>
+
+</div>
 
 
-            <div class="form-group">
-
-                <label for="category">
-                    事件類型
-                </label>
-
-                <select id="category">
-
-                    <option>餐飲</option>
-                    <option>交通</option>
-                    <option>購物</option>
-                    <option>電影</option>
-                    <option>影集</option>
-                    <option>閱讀</option>
-                    <option>聚餐</option>
-                    <option>旅行</option>
-                    <option>住宿</option>
-                    <option>健康</option>
-                    <option>學習</option>
-                    <option>工作</option>
-                    <option>娛樂</option>
-                    <option>其他</option>
-
-                </select>
-
-            </div>
-
+            <!-- 收支 -->
 
             <div class="form-group">
 
                 <label>
-                    收支性質
+                    收支
                 </label>
 
                 <div class="radio-group">
@@ -185,6 +211,8 @@
             </div>
 
 
+            <!-- 金額 -->
+
             <div class="form-group">
 
                 <label for="amount">
@@ -203,6 +231,8 @@
             </div>
 
 
+            <!-- 標籤 -->
+
             <div class="form-group">
 
                 <label for="tags">
@@ -212,21 +242,28 @@
                 <input
                     type="text"
                     id="tags"
-                    placeholder="例如：朋友, 晚餐, 台北"
+                    placeholder="例如：交通, 高雄, 家人"
                 >
 
             </div>
 
 
+
+            <!-- =================================================
+                 更多資料
+            ================================================== -->
+
             <details
-                class="more-fields"
                 id="more-fields"
+                class="more-fields"
             >
 
                 <summary>
-                    ＋ 更多資料
+                    更多資料
                 </summary>
 
+
+                <!-- 結束日期 -->
 
                 <div class="form-group">
 
@@ -242,6 +279,8 @@
                 </div>
 
 
+                <!-- 作品年份 -->
+
                 <div class="form-group">
 
                     <label for="work-year">
@@ -254,12 +293,13 @@
                         min="0"
                         max="2100"
                         step="1"
-                        inputmode="numeric"
-                        placeholder="例如：1972"
+                        placeholder="例如：2026"
                     >
 
                 </div>
 
+
+                <!-- 備註 -->
 
                 <div class="form-group">
 
@@ -270,7 +310,7 @@
                     <textarea
                         id="description"
                         rows="4"
-                        placeholder="其他想記錄的內容"
+                        placeholder="其他想記下來的內容"
                     ></textarea>
 
                 </div>
@@ -278,19 +318,24 @@
             </details>
 
 
+
+            <!-- 儲存 -->
+
             <button
                 type="button"
-                class="save-button"
                 id="save-button"
+                class="save-button"
             >
                 儲存
             </button>
 
 
+            <!-- 取消編輯 -->
+
             <button
                 type="button"
-                class="cancel-button"
                 id="cancel-button"
+                class="cancel-button"
                 hidden
             >
                 取消編輯
@@ -305,23 +350,532 @@
         </section>
 
 
-        <!-- 最近紀錄 -->
 
-        <section class="card records-card">
+        <!-- =================================================
+             統計
+        ================================================== -->
 
-            <button
-                type="button"
-                class="export-button"
-                id="export-button"
+                <section
+            class="card statistics-card app-page"
+            data-page-content="statistics"
+            hidden
+        >
+
+            <h2>
+                統計
+            </h2>
+
+
+            <!-- 統計期間 -->
+
+            <div class="form-group">
+
+                <label for="statistics-period">
+                    期間
+                </label>
+
+                <select id="statistics-period">
+
+                    <option value="all">
+                        全部
+                    </option>
+
+                    <option
+                        value="year"
+                        selected
+                    >
+                        今年
+                    </option>
+
+                    <option value="month">
+                        本月
+                    </option>
+
+                    <option value="history">
+                        指定年份／月份
+                    </option>
+
+                    <option value="custom">
+                        自訂日期
+                    </option>
+
+                </select>
+
+            </div>
+
+
+
+            <!-- =================================================
+                 指定年份／月份
+            ================================================== -->
+
+            <div
+                id="history-statistics-period"
+                hidden
             >
-                匯出資料
+
+                <div class="form-group">
+
+                    <label for="statistics-year">
+                        年份
+                    </label>
+
+                    <select id="statistics-year">
+                    </select>
+
+                </div>
+
+
+                <div class="form-group">
+
+                    <label for="statistics-month">
+                        月份
+                    </label>
+
+                    <select id="statistics-month">
+
+                        <option
+                            value="all"
+                            selected
+                        >
+                            全年
+                        </option>
+
+                        <option value="01">1 月</option>
+                        <option value="02">2 月</option>
+                        <option value="03">3 月</option>
+                        <option value="04">4 月</option>
+                        <option value="05">5 月</option>
+                        <option value="06">6 月</option>
+                        <option value="07">7 月</option>
+                        <option value="08">8 月</option>
+                        <option value="09">9 月</option>
+                        <option value="10">10 月</option>
+                        <option value="11">11 月</option>
+                        <option value="12">12 月</option>
+
+                    </select>
+
+                </div>
+
+            </div>
+
+
+
+            <!-- =================================================
+                 自訂日期
+            ================================================== -->
+
+            <div
+                id="custom-statistics-period"
+                hidden
+            >
+
+                <div class="form-group">
+
+                    <label for="statistics-start-date">
+                        開始日期
+                    </label>
+
+                    <input
+                        type="date"
+                        id="statistics-start-date"
+                    >
+
+                </div>
+
+
+                <div class="form-group">
+
+                    <label for="statistics-end-date">
+                        結束日期
+                    </label>
+
+                    <input
+                        type="date"
+                        id="statistics-end-date"
+                    >
+
+                </div>
+
+            </div>
+
+            <!-- =================================================
+                 紀錄篩選
+            ================================================== -->
+
+            <div class="statistics-filter-section">
+
+                <div class="statistics-filter-title">
+                    紀錄
+                </div>
+
+                <div
+                    id="statistics-record-filters"
+                    class="statistics-filter-buttons"
+                >
+
+                    <button
+                        type="button"
+                        class="statistics-filter-button active"
+                        data-record-filter="all"
+                    >
+                        全部
+                    </button>
+
+                    <button
+                        type="button"
+                        class="statistics-filter-button"
+                        data-record-filter="收支"
+                    >
+                        收支
+                    </button>
+
+                    <button
+                        type="button"
+                        class="statistics-filter-button"
+                        data-record-filter="影視"
+                    >
+                        影視
+                    </button>
+
+                    <button
+                        type="button"
+                        class="statistics-filter-button"
+                        data-record-filter="閱讀"
+                    >
+                        閱讀
+                    </button>
+
+                    <button
+                        type="button"
+                        class="statistics-filter-button"
+                        data-record-filter="醫療"
+                    >
+                        醫療
+                    </button>
+
+                    <button
+                        type="button"
+                        class="statistics-filter-button"
+                        data-record-filter="購物"
+                    >
+                        購物
+                    </button>
+
+                    <button
+                        type="button"
+                        class="statistics-filter-button"
+                        data-record-filter="旅行"
+                    >
+                        旅行
+                    </button>
+
+                    <button
+                        type="button"
+                        class="statistics-filter-button"
+                        data-record-filter="工作"
+                    >
+                        工作
+                    </button>
+
+                    <button
+                        type="button"
+                        class="statistics-filter-button"
+                        data-record-filter="其他"
+                    >
+                        其他
+                    </button>
+
+                </div>
+
+            </div>
+
+
+            <!-- =================================================
+                 標籤篩選
+            ================================================== -->
+
+            <div class="statistics-filter-section">
+
+                <div class="statistics-filter-title">
+                    標籤
+                </div>
+
+                <div
+                    id="statistics-tag-filters"
+                    class="statistics-filter-buttons"
+                >
+
+                    <button
+                        type="button"
+                        class="statistics-filter-button active"
+                        data-tag-filter="all"
+                    >
+                        全部
+                    </button>
+
+                </div>
+
+            </div>
+
+
+            <!-- =================================================
+                 摘要
+            ================================================== -->
+
+<h3
+    id="statistics-summary-title"
+    class="statistics-summary-title"
+>
+    年度摘要
+</h3>
+
+<div
+    id="statistics-filter-summary"
+    class="statistics-filter-summary"
+>
+    全部紀錄 · 全部標籤
+</div>
+
+            <div class="statistics-summary">
+
+                <div class="statistics-item">
+
+                    <span class="statistics-label">
+                        紀錄
+                    </span>
+
+                    <strong id="statistics-count">
+                        0 筆
+                    </strong>
+
+                </div>
+
+
+                <div class="statistics-item">
+
+                    <span class="statistics-label">
+                        支出
+                    </span>
+
+                    <strong id="statistics-expense">
+                        NT$ 0
+                    </strong>
+
+                </div>
+
+
+                <div class="statistics-item">
+
+                    <span class="statistics-label">
+                        收入
+                    </span>
+
+                    <strong id="statistics-income">
+                        NT$ 0
+                    </strong>
+
+                </div>
+
+
+                <div class="statistics-item">
+
+                    <span class="statistics-label">
+                        結餘
+                    </span>
+
+                    <strong id="statistics-balance">
+                        NT$ 0
+                    </strong>
+
+                </div>
+
+            </div>
+
+
+
+            <!-- =================================================
+     紀錄統計
+================================================== -->
+
+<div class="statistics-section">
+
+    <h3>
+        紀錄
+    </h3>
+
+    <div id="event-statistics">
+
+        <p class="empty-message">
+            目前沒有資料。
+        </p>
+
+    </div>
+
+</div>
+
+
+
+            <!-- =================================================
+                 標籤統計
+            ================================================== -->
+
+            <div class="statistics-section">
+
+                <h3>
+                    標籤
+                </h3>
+
+                <div id="tag-statistics">
+
+                    <p class="empty-message">
+                        目前沒有資料。
+                    </p>
+
+                </div>
+
+            </div>
+
+        </section>
+
+        <!-- =================================================
+             圖表統計
+        ================================================== -->
+
+                <section
+            class="card app-page"
+            data-page-content="charts"
+            hidden
+        >
+
+            <h2>
+                圖表
+            </h2>
+
+
+            <!-- 每月支出趨勢 -->
+
+            <div class="statistics-section">
+
+                <h3>
+                    每月支出趨勢
+                </h3>
+
+                <div
+                    id="monthly-expense-chart"
+                    class="chart-container"
+                >
+
+                    <p class="empty-message">
+                        目前沒有資料。
+                    </p>
+
+                </div>
+
+            </div>
+
+
+            <!-- 紀錄次數排行 -->
+
+<div class="statistics-section">
+
+    <h3>
+        紀錄次數排行
+    </h3>
+
+    <div
+        id="event-ranking-chart"
+        class="chart-container"
+    >
+
+        <p class="empty-message">
+            目前沒有資料。
+        </p>
+
+    </div>
+
+</div>
+
+        </section>
+
+        <!-- =================================================
+             搜尋紀錄
+        ================================================== -->
+
+                <section
+            class="card app-page"
+            data-page-content="search"
+            hidden
+        >
+
+            <h2>
+                搜尋紀錄
+            </h2>
+
+            <div class="form-group">
+
+                <label for="search-input">
+                    關鍵字
+                </label>
+
+                <input
+                    type="search"
+                    id="search-input"
+                    placeholder="搜尋紀錄、標籤或備註"
+                    autocomplete="off"
+                >
+
+            </div>
+
+            
+            <div id="search-results">
+
+                <p class="empty-message">
+                    輸入關鍵字開始搜尋。
+                </p>
+
+            </div>
+
+        </section>
+
+
+
+        <!-- =================================================
+             最近紀錄
+        ================================================== -->
+
+                <section
+            class="card records-card app-page"
+            data-page-content="record"
+        >
+
+                                   <button
+                type="button"
+                id="export-button"
+                class="export-button"
+            >
+                匯出備份
             </button>
 
+<button
+    type="button"
+    id="import-button"
+    class="export-button"
+>
+    匯入備份
+</button>
+
+<input
+    type="file"
+    id="import-file"
+    accept=".json,application/json"
+    hidden
+>
 
             <h2>
                 最近紀錄
             </h2>
-
 
             <div id="records">
 
@@ -333,11 +887,19 @@
 
         </section>
 
+
     </main>
 
 
+
+    <!-- =====================================================
+         JavaScript
+    ====================================================== -->
+
     <script src="database.js"></script>
+
     <script src="app.js"></script>
+
 
 </body>
 
